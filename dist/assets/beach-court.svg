@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 180" fill="none">
+ <defs>
+  <linearGradient id="sand" x1="25" y1="20" x2="210" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#f4dfb8"/><stop offset="1" stop-color="#d9b77e"/></linearGradient>
+  <pattern id="grains" width="17" height="19" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".7" fill="#ac8555" opacity=".25"/><circle cx="13" cy="14" r=".65" fill="#fff7e6" opacity=".7"/><path d="m6 15 2 1" stroke="#b18e60" stroke-width=".5" opacity=".25"/></pattern>
+  <pattern id="mesh" width="4" height="5" patternUnits="userSpaceOnUse"><path d="M0 0H4V5" stroke="#20435a" stroke-width=".5" opacity=".7"/></pattern>
+ </defs>
+ <path d="m28 20 198 4 3 132-203 1Z" fill="#001b2d" opacity=".2" transform="translate(6 7)"/>
+ <path d="m23 15 201 3 3 135-205 4Z" fill="url(#sand)"/>
+ <path d="m23 15 201 3 3 135-205 4Z" fill="url(#grains)"/>
+ <rect x="42" y="35" width="165" height="101" rx=".5" stroke="#fffdf6" stroke-width="2.6"/>
+ <!-- Beach tennis: perimeter only, without tennis service boxes or alleys. -->
+ <path d="M127 23v125" stroke="#98794e" stroke-width="3" opacity=".25" transform="translate(6 3)"/>
+ <path d="M125 24v122" stroke="#062d47" stroke-width="2.5"/>
+ <path d="M125 25h8v119h-8Z" fill="url(#mesh)"/>
+ <path d="M133 25v119" stroke="#fff" stroke-width="2"/>
+ <path d="M125 24h9m-9 121h9" stroke="#00d5c8" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="125" cy="21" r="3" fill="#0a2b48"/><circle cx="125" cy="148" r="3" fill="#0a2b48"/>
+ <g fill="#b38f5e" opacity=".28"><ellipse cx="80" cy="61" rx="1.5" ry="3" transform="rotate(25 80 61)"/><ellipse cx="85" cy="66" rx="1.5" ry="3" transform="rotate(25 85 66)"/><ellipse cx="179" cy="109" rx="1.5" ry="3" transform="rotate(-25 179 109)"/><ellipse cx="185" cy="106" rx="1.5" ry="3" transform="rotate(-25 185 106)"/></g>
+ <g stroke-linecap="round"><path d="m72 57 6 4m-3-7-3 7" stroke="#0a2b48" stroke-width="4"/><circle cx="75" cy="57" r="4" fill="#00b8b1"/><circle cx="73" cy="55" r="2" fill="#0a2b48"/>
+ <path d="m87 106 6-2m-4-2 1 7" stroke="#0a2b48" stroke-width="4"/><circle cx="89" cy="104" r="4" fill="#00b8b1"/><circle cx="87" cy="102" r="2" fill="#0a2b48"/>
+ <path d="m178 64 6-2m-4-2 2 6" stroke="#0a2b48" stroke-width="4"/><circle cx="180" cy="63" r="4" fill="#fff"/><circle cx="181" cy="61" r="2" fill="#0a2b48"/>
+ <path d="m166 113 5 3m-1-6-1 7" stroke="#0a2b48" stroke-width="4"/><circle cx="169" cy="112" r="4" fill="#fff"/><circle cx="170" cy="110" r="2" fill="#0a2b48"/></g>
+ <circle cx="145" cy="81" r="3" fill="#ffad48"/><path d="m139 85-4 3" stroke="#fff" stroke-width="1" opacity=".8"/>
+</svg>

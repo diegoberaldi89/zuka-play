@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a2b48"><meta name="description" content="Encontre seu próximo torneio de beach tennis. Acompanhe jogos, confira resultados e descubra eventos perto de você.">
+<title>Zuka Play — Seu próximo torneio está aqui</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
+<script src="./data/municipios.js" defer></script>
+<script src="./filter-rules.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
+<header class="header"><div class="header-inner">
+<a class="brand" href="#torneios" aria-label="Zuka Play, início"><svg class="brand-logo" viewBox="620 820 555 105" aria-hidden="true" focusable="false"><image href="./assets/zuka-identidade.png" width="1254" height="1254"/></svg><span class="brand-product">PLAY</span></a>
+<nav aria-label="Navegação principal"><button class="nav-link active" data-view="torneios">Torneios</button><button class="nav-link" data-view="ao-vivo"><span class="live-dot"></span> Placares</button><button class="nav-link" data-view="favoritos">Favoritos <span id="fav-count">0</span></button></nav>
+<button aria-label="Área do organizador" class="button organizer-button" data-view="organizador"><span data-icon="plus"></span><span>Área do organizador</span></button>
+</div></header>
+<div class="subheader"><div><span class="sport-label"><span data-icon="racket"></span> BEACH TENNIS</span><span class="demo-label">VERSÃO DEMONSTRATIVA · EVENTOS FICTÍCIOS</span><span class="today" id="today"></span></div></div>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar" aria-label="Filtros de torneios">
+<div class="sidebar-title"><span>ENCONTRE SEU JOGO</span><button class="text-button" id="clear-filters">Limpar</button></div>
+<label class="field-label" for="state-filter">Estado</label><div class="select-wrap"><select id="state-filter"><option value="">Todos os estados</option></select></div>
+<label class="field-label" for="city-search">Cidade</label><input class="filter-input city-search" id="city-search" type="search" placeholder="Digite para buscar" aria-label="Buscar cidade na lista" autocomplete="off"><div class="select-wrap"><select id="city-filter" aria-label="Selecionar cidade"><option value="">Todas as cidades</option></select></div><small class="filter-hint" id="city-count"></small>
+<div class="nearby-box"><button class="nearby-button" id="nearby" aria-pressed="false"><span data-icon="locate"></span> Perto de mim</button><div class="distance-heading"><span>Distância em km</span><output id="distance-label">0 – 100 km</output></div><div class="distance-slider"><div class="distance-track"><span id="distance-fill"></span></div><input id="distance-min-slider" type="range" min="0" max="500" step="1" value="0" aria-label="Distância mínima na barra"><input id="distance-max-slider" type="range" min="0" max="500" step="1" value="100" aria-label="Distância máxima na barra"></div><div class="distance-fields"><label for="distance-min">Mínima<input id="distance-min" type="number" min="0" step="1" value="0" inputmode="numeric" aria-describedby="distance-error"></label><label for="distance-max">Máxima<input id="distance-max" type="number" min="0" step="1" value="100" inputmode="numeric" aria-describedby="distance-error"></label></div><p id="distance-error" class="filter-error" role="status"></p><p id="location-message">Ative sua localização para filtrar por distância.</p></div>
+<span class="field-label" id="date-filter-label">Quando você quer jogar?</span><details class="date-picker" id="date-picker"><summary aria-labelledby="date-filter-label date-label"><span id="date-label">Qualquer data</span><span data-icon="calendar"></span></summary><div class="date-fields"><label for="date-start">A partir de<input id="date-start" type="date" aria-describedby="date-error"></label><label for="date-end">Até<input id="date-end" type="date" aria-describedby="date-error"></label><p id="date-error" class="filter-error" role="status"></p><button class="text-button" id="clear-dates" type="button">Limpar datas</button><button class="button date-apply" id="apply-dates" type="button">Aplicar período</button></div></details>
+<label class="field-label" for="category-filter">Categoria</label><div class="select-wrap"><select id="category-filter"><option value="">Todas as categorias</option><option>Profissional</option><option>A</option><option>B</option><option>C</option><option>D</option><option>Iniciante</option></select></div>
+<button class="button apply-filters" id="apply-filters">Ver torneios <span data-icon="arrow"></span></button>
+<div class="sidebar-note"><span data-icon="sun"></span><p>Mais quadra.<br><strong>Menos procura.</strong></p><small>Seu próximo torneio pode estar mais perto do que você imagina.</small></div>
+</aside>
+<main id="main" tabindex="-1"></main>
+<aside class="rightbar" id="rightbar" aria-label="Destaques e placares"></aside>
+</div>
+<footer class="footer"><a class="footer-brand" href="#torneios" aria-label="Zuka Play, início"><svg class="brand-logo" viewBox="620 820 555 105" aria-hidden="true" focusable="false"><image href="./assets/zuka-identidade.png" width="1254" height="1254"/></svg><span class="brand-product">PLAY</span></a><span>O beach tennis acontece aqui.</span><span>Protótipo · Dados salvos neste navegador</span></footer>
+<dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"></dialog>
+<dialog id="form-dialog" class="form-dialog" aria-labelledby="form-title"></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>

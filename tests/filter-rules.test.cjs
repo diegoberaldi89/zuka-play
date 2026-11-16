@@ -1,0 +1,17 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const rules=require('../dist/filter-rules.js');
+const t={start:'2026-11-20',end:'2026-11-24'};
+test('inclui torneio que atravessa o intervalo selecionado',()=>assert.equal(rules.matchesDateRange(t,'2026-11-21','2026-11-22'),true));
+test('inclui a data final do torneio no primeiro dia selecionado',()=>assert.equal(rules.matchesDateRange(t,'2026-11-24','2026-11-24'),true));
+test('exclui torneio inteiramente anterior ao período',()=>assert.equal(rules.matchesDateRange(t,'2026-11-25',''),false));
+test('exclui torneio inteiramente posterior ao período',()=>assert.equal(rules.matchesDateRange(t,'','2026-11-19'),false));
+test('rejeita intervalo de datas invertido',()=>assert.equal(rules.matchesDateRange(t,'2026-11-24','2026-11-20'),false));
+test('inclui torneios sem restringir datas quando campos estão vazios',()=>assert.equal(rules.matchesDateRange(t,'',''),true));
+test('distância inclui os dois limites e aceita zero',()=>{assert.equal(rules.matchesDistance(0,0,100),true);assert.equal(rules.matchesDistance(100,0,100),true);});
+test('distância exclui abaixo do mínimo e acima do máximo',()=>{assert.equal(rules.matchesDistance(9.9,10,100),false);assert.equal(rules.matchesDistance(100.1,10,100),false);});
+test('distância exclui torneios sem coordenadas',()=>assert.equal(rules.matchesDistance(null,0,100),false));
+test('rejeita raio negativo, campo vazio e limites invertidos',()=>{assert.equal(rules.validDistanceRange(-1,100),false);assert.equal(rules.validDistanceRange('',100),false);assert.equal(rules.validDistanceRange(200,100),false);});
+const cities=[{name:'Santa Helena',state:'PR'},{name:'Santa Helena',state:'SC'},{name:'São Luís',state:'MA'},{name:'Santos',state:'SP'}];
+test('diferencia cidades homônimas por estado',()=>assert.deepEqual(rules.citiesForState(cities,'SC',''),[{name:'Santa Helena',state:'SC'}]));
+test('busca cidades sem exigir acentos',()=>assert.deepEqual(rules.citiesForState(cities,'','sao luis'),[{name:'São Luís',state:'MA'}]));
