@@ -28,7 +28,7 @@ Contas e senhas pertencem ao Supabase Auth, não às tabelas públicas. Não há
 
 Visitantes consultam apenas torneios publicados e seus dados esportivos. Perfis privados não são públicos. Organizadores autenticados criam, alteram e excluem somente seus próprios eventos e dados relacionados. Eles não podem criar tabelas, alterar a estrutura do banco ou modificar eventos de outras contas. Chaves estrangeiras compostas impedem associar categoria, dupla ou placar de outro torneio.
 
-A confirmação de e-mail continua como padrão pretendido. Até configurar SMTP e testar a entrega, não anunciar cadastro público com confirmação operacional. Desativar a confirmação exige uma decisão explícita posterior do usuário; ele autorizou essa alternativa apenas se o custo justificar.
+Por decisão explícita do usuário, a confirmação de e-mail foi desativada em 16/11/2026. Novas contas podem iniciar sessão imediatamente. O acesso continua exigindo e-mail e senha e respeitando RLS por organizador.
 
 ## Verificação
 
@@ -41,7 +41,7 @@ Os testes de banco usam PostgreSQL embutido (PGlite) e identidades de teste isol
 
 ## Integração publicada
 
-O site consulta torneios, categorias, duplas, confrontos e sets compartilhados no Supabase. Cadastro, login, logout, confirmação e recuperação usam Supabase Auth. A confirmação de e-mail permanece ativa. **SMTP próprio e entrega pública de e-mails ainda precisam ser configurados e testados**; o serviço padrão tem restrições e não deve ser considerado pronto para cadastro público geral.
+O site consulta torneios, categorias, duplas, confrontos e sets compartilhados no Supabase. Cadastro, login, logout e recuperação usam Supabase Auth. A confirmação de e-mail está desativada. SMTP próprio permanece pendente apenas para fluxos que enviam mensagens, como recuperação de senha; o cadastro não depende de envio de e-mail.
 
 `dist/backend.js` contém apenas URL e chave publicável. A sessão é renovada com refresh token. Favoritos permanecem locais. Dados fictícios e eventos locais antigos não são importados para o banco.
 

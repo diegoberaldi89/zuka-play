@@ -31,7 +31,7 @@ Abra http://localhost:4173. Também é possível abrir `dist/index.html` diretam
 
 ## Limites atuais
 
-O banco compartilhado usa Supabase e RLS por organizador. O cadastro tem confirmação de e-mail ativa; SMTP próprio e entrega dos e-mails ainda precisam ser configurados e testados. Não há integração com feeds externos, importação de eventos antigos do navegador, geração automática de chaves ou cálculo de classificação. A busca por distância exige coordenadas e os formulários atuais ainda não fazem geocodificação.
+O banco compartilhado usa Supabase e RLS por organizador. O cadastro dispensa confirmação de e-mail. A recuperação de senha por e-mail ainda depende de configurar e testar SMTP próprio. Não há integração com feeds externos, importação de eventos antigos do navegador, geração automática de chaves ou cálculo de classificação. A busca por distância exige coordenadas e os formulários atuais ainda não fazem geocodificação.
 
 ## Direção de produto
 
@@ -55,4 +55,4 @@ Para executar todos os testes, incluindo as políticas do banco: `npm ci` e `npm
 
 ## Integração Supabase (16/11/2026)
 
-A versão atual utiliza banco compartilhado e acesso de organizadores. Os detalhes e limitações atuais estão em `supabase/README.md`; descrições anteriores do protótipo local acima são históricas. O envio de e-mails de confirmação ainda depende de SMTP próprio.
+A versão atual utiliza banco compartilhado e acesso de organizadores. Os detalhes e limitações atuais estão em `supabase/README.md`; descrições anteriores do protótipo local acima são históricas. O cadastro não exige confirmação de e-mail; SMTP próprio segue pendente para recuperação de senha.
