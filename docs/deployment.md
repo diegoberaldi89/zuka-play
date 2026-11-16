@@ -19,12 +19,12 @@ Zona Cloudflare Free: `c272472868efd2f8a60e104748d235e9`. Os domínios `zukaplay
 
 Em 16/11/2026, a delegação pública foi confirmada e a Cloudflare informou a zona e os dois domínios como ativos. O endereço principal respondeu via HTTPS. Não é necessário republicar os arquivos estáticos para o apontamento entrar em vigor.
 
-Os e-mails de autenticação ainda não possuem SMTP próprio configurado. A URL de autenticação do Supabase continua em `https://zuka-play.pages.dev` até o domínio próprio estar acessível com HTTPS; depois, atualizar Site URL e adicionar os novos redirects, preservando o endereço anterior durante a transição.
+Os e-mails de autenticação ainda não possuem SMTP próprio configurado. A URL principal de autenticação agora é `https://zukaplay.com.br`, com redirects para o domínio, www e o endereço Pages anterior.
 
 ## Atualizações do site
 
 Não há compilação nem dependências para servir a página. Em uma configuração de build, usar `exit 0` como comando e `dist` como saída.
 
-A publicação direta atual não está ligada automaticamente a pushes no GitHub. Atualizações precisam enviar novamente os arquivos de `dist` ao projeto Pages. Dados cadastrados no protótipo ficam no navegador de cada visitante e não são compartilhados com outras pessoas.
+A publicação direta atual não está ligada automaticamente a pushes no GitHub. Atualizações precisam enviar novamente os arquivos de `dist` ao projeto Pages. Torneios e resultados são compartilhados no Supabase; favoritos continuam locais.
 
 O arquivo `.openai/hosting.json` é configuração da prévia anterior do Sites, sem uso no Cloudflare Pages. Não faz parte da distribuição pública preparada para o GitHub.

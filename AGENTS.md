@@ -25,4 +25,4 @@ Site público: `https://zuka-play.pages.dev`. O projeto Pages `zuka-play` usa Di
 
 ## Supabase
 
-Projeto Cloud Free `zetarilmjhsqxrvnqnxp`, região São Paulo. Estrutura inicial aplicada e documentada em `supabase/README.md`; migrações em `supabase/migrations/`. Manter RLS em todas as tabelas e testar leitura pública e isolamento entre organizadores antes de publicar integração. O frontend ainda usa dados locais até sua integração explícita. Não reaplicar a migração inicial na instância já configurada.
+Projeto Cloud Free `zetarilmjhsqxrvnqnxp`, região São Paulo. Estrutura inicial aplicada e documentada em `supabase/README.md`; migrações em `supabase/migrations/`. Manter RLS em todas as tabelas e testar leitura pública e isolamento entre organizadores antes de publicar integração. O frontend usa Supabase Auth e `save_event` com direitos do usuário. Favoritos ficam locais. SMTP próprio está pendente; não anunciar entrega de e-mails como validada. Não reaplicar a migração inicial na instância já configurada.

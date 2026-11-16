@@ -7,6 +7,8 @@
 <link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
 <script src="./data/municipios.js" defer></script>
 <script src="./filter-rules.js" defer></script>
+<script src="./supabase-mapping.js" defer></script>
+<script src="./backend.js" defer></script>
 <script src="./app.js" defer></script>
 </head>
 <body>
@@ -16,7 +18,7 @@
 <nav aria-label="Navegação principal"><button class="nav-link active" data-view="torneios">Torneios</button><button class="nav-link" data-view="ao-vivo"><span class="live-dot"></span> Placares</button><button class="nav-link" data-view="favoritos">Favoritos <span id="fav-count">0</span></button></nav>
 <button aria-label="Área do organizador" class="button organizer-button" data-view="organizador"><span data-icon="plus"></span><span>Área do organizador</span></button>
 </div></header>
-<div class="subheader"><div><span class="sport-label"><span data-icon="racket"></span> BEACH TENNIS</span><span class="demo-label">VERSÃO DEMONSTRATIVA · EVENTOS FICTÍCIOS</span><span class="today" id="today"></span></div></div>
+<div class="subheader"><div><span class="sport-label"><span data-icon="racket"></span> BEACH TENNIS</span><span class="demo-label">TORNEIOS E RESULTADOS</span><span class="today" id="today"></span></div></div>
 <div class="app-shell">
 <aside class="sidebar" id="sidebar" aria-label="Filtros de torneios">
 <div class="sidebar-title"><span>ENCONTRE SEU JOGO</span><button class="text-button" id="clear-filters">Limpar</button></div>
@@ -31,7 +33,7 @@
 <main id="main" tabindex="-1"></main>
 <aside class="rightbar" id="rightbar" aria-label="Destaques e placares"></aside>
 </div>
-<footer class="footer"><a class="footer-brand" href="#torneios" aria-label="Zuka Play, início"><svg class="brand-logo" viewBox="620 820 555 105" aria-hidden="true" focusable="false"><image href="./assets/zuka-identidade.png" width="1254" height="1254"/></svg><span class="brand-product">PLAY</span></a><span>O beach tennis acontece aqui.</span><span>Protótipo · Dados salvos neste navegador</span></footer>
+<footer class="footer"><a class="footer-brand" href="#torneios" aria-label="Zuka Play, início"><svg class="brand-logo" viewBox="620 820 555 105" aria-hidden="true" focusable="false"><image href="./assets/zuka-identidade.png" width="1254" height="1254"/></svg><span class="brand-product">PLAY</span></a><span>O beach tennis acontece aqui.</span><span>Torneios e placares informados pelos organizadores</span></footer>
 <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"></dialog>
 <dialog id="form-dialog" class="form-dialog" aria-labelledby="form-title"></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

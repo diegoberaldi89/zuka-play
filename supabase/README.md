@@ -39,18 +39,16 @@ npm test
 
 Os testes de banco usam PostgreSQL embutido (PGlite) e identidades de teste isoladas. Exercitam RLS e privilégios reais; o schema `auth` e o contexto JWT são fixtures locais. Nenhuma conta de teste é criada na instância hospedada. Esses testes não substituem um teste ponta a ponta de Supabase Auth, envio de e-mail e interface.
 
-## Integração com o aplicativo — próxima etapa
+## Integração publicada
 
-O site publicado ainda usa o armazenamento local do protótipo. Esta etapa prepara o banco; não conecta o frontend automaticamente e não copia eventos fictícios para o banco real.
+O site consulta torneios, categorias, duplas, confrontos e sets compartilhados no Supabase. Cadastro, login, logout, confirmação e recuperação usam Supabase Auth. A confirmação de e-mail permanece ativa. **SMTP próprio e entrega pública de e-mails ainda precisam ser configurados e testados**; o serviço padrão tem restrições e não deve ser considerado pronto para cadastro público geral.
 
-A próxima etapa deve introduzir um módulo de acesso a dados, Supabase Auth, formulários de cadastro/login/recuperação e a substituição das operações em `localStorage` por operações autenticadas. A chave publicável é própria para clientes, protegida por RLS. Senha do banco, chaves secretas e `service_role` nunca devem ser incluídas no site, aplicativo ou repositório.
+`dist/backend.js` contém apenas URL e chave publicável. A sessão é renovada com refresh token. Favoritos permanecem locais. Dados fictícios e eventos locais antigos não são importados para o banco.
 
-O arquivo `.env.example` documenta as duas configurações públicas que serão necessárias. Ele ainda não é lido pelo protótipo estático. Não armazenar credenciais SMTP nesse arquivo público.
+A migração `202611160002_save_event.sql` foi aplicada pelo SQL Editor em 16/11/2026. `save_event` executa com os privilégios do usuário, mantém RLS e salva um evento completo em uma transação, rejeitando uma versão desatualizada. Categorias/duplas/jogos são reconstruídos no salvamento do evento; partidas mantêm seus UUIDs. Esta versão não fornece edição simultânea com mesclagem, gêneros separados ou fusos diferentes de São Paulo. Reconciliar também esta migração antes de usar o CLI.
 
-Favoritos podem permanecer no navegador, sem exigir cadastro dos visitantes. Futuro aplicativo Android usará o mesmo banco e as mesmas permissões.
+Os testes locais verificam leitura pública, isolamento entre contas, gravação de placares, rollback e conflitos. Um teste transacional no banco hospedado criou torneio, confronto e dois sets e confirmou leitura pública, seguido de rollback para não deixar dados de teste. O fluxo completo de cadastro/entrega de e-mail ainda não foi verificado com um usuário real.
 
-## Endereços de autenticação
-
-Site URL configurada no painel: `https://zuka-play.pages.dev`. Redirecionamento explicitamente autorizado: `https://zuka-play.pages.dev/`. Endereços de desenvolvimento e futuros aplicativos devem ser adicionados quando os respectivos fluxos forem integrados e testados.
+Site URL: `https://zukaplay.com.br`. Redirects: `https://zukaplay.com.br/`, `https://www.zukaplay.com.br/` e `https://zuka-play.pages.dev/`.
 
 Auditoria remota reexecutável: `verify-permissions.sql`.
