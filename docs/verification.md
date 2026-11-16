@@ -51,3 +51,13 @@ Não testados em aparelhos físicos Android/iOS ou navegadores externos. A local
 - Datas: período 21–23/11/2026 retornou Open Litoral e o torneio de verificação que termina em 24/11, confirmando sobreposição; período invertido apresentou erro e desabilitou Aplicar.
 - Celular 390 × 844: painel de filtros e seleção de datas verificados; documento sem transbordamento horizontal.
 - Console do navegador sem erros observados nesta rodada.
+
+## Preparação do Supabase — 16/11/2026
+
+- Supabase Cloud Free: Zuka Play, referência `zetarilmjhsqxrvnqnxp`, região São Paulo (`sa-east-1`).
+- Migração inicial aplicada via SQL Editor. Consulta prévia confirmou zero tabelas no schema público.
+- Auditoria remota após aplicação confirmou seis tabelas; em todas, RLS ativo, escrita anônima desabilitada e criação de tabelas por `authenticated` desabilitada. Consulta reexecutável em `supabase/verify-permissions.sql`.
+- Testes locais PostgreSQL/PGlite: 26 testes passaram, incluindo 13 subtestes de banco e os testes de filtros existentes. Casos de acesso público, rascunhos privados, dois proprietários, adulteração de proprietário, relacionamentos entre eventos, placares inválidos, perfis privados e ausência de privilégios DDL.
+- Não foram criados usuários de teste na instância hospedada. Cadastro, login, entrega de e-mail e interface conectada ainda não foram testados ponta a ponta.
+- Site URL e redirecionamento autorizado configurados para `https://zuka-play.pages.dev/`.
+- O frontend continua no modo demonstrativo/local; esta etapa não publicou um formulário de login sem integração.

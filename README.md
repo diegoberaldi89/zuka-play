@@ -49,3 +49,9 @@ node --test tests/*.test.cjs
 ```
 
 Os testes exercitam sobreposição de datas, limites de distância, rejeição de intervalos inválidos, cidades homônimas e busca sem acentos. A lista do IBGE está em `dist/data/municipios.js`; a fonte e a data de consulta estão em `dist/data/README.md`. Os campos de data usam os calendários nativos do navegador, cuja aparência varia por plataforma.
+
+## Banco Supabase
+
+A estrutura inicial do banco já está preparada e aplicada no Supabase Cloud, no plano Free e região São Paulo. Esquema, permissões, limitações e próximos passos estão em [supabase/README.md](supabase/README.md). O site publicado ainda usa o armazenamento local até a integração da próxima etapa.
+
+Para executar todos os testes, incluindo as políticas do banco: `npm ci` e `npm test`. A dependência de desenvolvimento PGlite roda PostgreSQL localmente, sem servidor ou Docker. Não é usada pelo site publicado.

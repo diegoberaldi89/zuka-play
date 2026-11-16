@@ -4,6 +4,7 @@ Aplicativo web em HTML, CSS e JavaScript puro. Arquivos publicados em `dist/`; t
 
 ## Validação
 
+- Em um checkout novo, executar `npm ci` para instalar apenas as dependências de desenvolvimento/testes. O site continua sem build.
 - Executar `node --test tests/*.test.cjs` para alterações de comportamento.
 - Validar sintaxe dos scripts alterados com `node --check`.
 - Conferir no navegador quando houver mudanças visuais ou de interação.
@@ -21,3 +22,7 @@ Credenciais, arquivos `.env`, dados privados, estado do navegador e configuraç�
 ## Hospedagem
 
 Site público: `https://zuka-play.pages.dev`. O projeto Pages `zuka-play` usa Direct Upload de `dist/`. Pushes no GitHub não disparam publicação automática nesta configuração. Ao publicar uma versão, confirmar o deployment e o acesso público antes de informar conclusão.
+
+## Supabase
+
+Projeto Cloud Free `zetarilmjhsqxrvnqnxp`, região São Paulo. Estrutura inicial aplicada e documentada em `supabase/README.md`; migrações em `supabase/migrations/`. Manter RLS em todas as tabelas e testar leitura pública e isolamento entre organizadores antes de publicar integração. O frontend ainda usa dados locais até sua integração explícita. Não reaplicar a migração inicial na instância já configurada.
