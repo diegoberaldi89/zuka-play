@@ -1,0 +1,3 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const f=require('../dist/tournament-fields.js');
+test('currency distinguishes free entry, omitted amount and decimal cents',()=>{assert.equal(f.amount(''),null);assert.equal(f.amount('0'),0);assert.equal(f.money('100.5').replace(/\s/g,' '),'R$ 100,50');assert.equal(f.money(0).replace(/\s/g,' '),'R$ 0,00');assert.equal(f.money(null),'');assert.equal(f.money('A consultar'),'');assert.equal(f.money(-1),'');});
+test('structured address preserves legacy addresses when not split',()=>{assert.equal(f.address({street:'Rua Um',number:'10',neighborhood:'Centro',postalCode:'12345-678'}),'Rua Um, 10, Centro, CEP 12345-678');assert.equal(f.address({address:'Antigo endereço'}),'Antigo endereço');});

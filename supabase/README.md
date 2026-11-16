@@ -60,3 +60,7 @@ A migração `202611160003_super_admin.sql` foi aplicada pelo SQL Editor. A tabe
 O superadministrador consulta nomes e e-mails de organizadores via `list_organizers` e administra todos os torneios, incluindo seus dados esportivos. As políticas dos organizadores comuns continuam limitadas ao proprietário. A edição administrativa não transfere propriedade. Senhas e credenciais de organizadores não são disponibilizadas.
 
 O painel administrativo inclui busca por nome/e-mail e definição de uma nova senha. A Edge Function `admin-password` valida o token no Auth, verifica `is_super_admin` com esse token e usa a credencial de serviço somente no ambiente do servidor para atualizar o usuário no Auth Admin API. A senha não é retornada nem registrada pelo código. Credenciais de serviço nunca devem ser copiadas para `dist/`. O envio da nova senha ao organizador é responsabilidade do administrador; o site não envia mensagens automaticamente.
+
+## Valores e endereço do torneio
+
+A migração `202611160004_tournament_fields.sql` adiciona quatro valores numéricos de inscrição, premiação numérica, rua, bairro, número e CEP. Valores nulos significam não informado e zero representa gratuidade. Campos textuais antigos de endereço e preço permanecem para compatibilidade. A interface mostra os valores com moeda BRL. Um trigger converte nomes de torneios para maiúsculas inclusive em gravações diretas. A função `save_event` continua respeitando proprietário e superadministrador e preserva os novos campos quando um cliente antigo não os envia. Migração aplicada pelo SQL Editor.
