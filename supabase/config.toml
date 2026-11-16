@@ -1,0 +1,3 @@
+[functions.admin-password]
+# JWT is verified against Supabase Auth in the handler, followed by the admin check.
+verify_jwt = false

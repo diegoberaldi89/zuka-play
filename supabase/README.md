@@ -52,3 +52,11 @@ Os testes locais verificam leitura pública, isolamento entre contas, gravação
 Site URL: `https://zukaplay.com.br`. Redirects: `https://zukaplay.com.br/`, `https://www.zukaplay.com.br/` e `https://zuka-play.pages.dev/`.
 
 Auditoria remota reexecutável: `verify-permissions.sql`.
+
+## Superadministrador único
+
+A migração `202611160003_super_admin.sql` foi aplicada pelo SQL Editor. A tabela privada `app_private.super_admin` permite uma única linha, com UUID do usuário autorizado; clientes não têm privilégios de alteração e RLS está habilitada. A função `is_super_admin` verifica a identidade do JWT e não usa metadados editáveis pelo usuário. A atribuição da conta é uma operação separada de administração, fora da migração e do repositório público.
+
+O superadministrador consulta nomes e e-mails de organizadores via `list_organizers` e administra todos os torneios, incluindo seus dados esportivos. As políticas dos organizadores comuns continuam limitadas ao proprietário. A edição administrativa não transfere propriedade. Senhas e credenciais de organizadores não são disponibilizadas.
+
+O painel administrativo inclui busca por nome/e-mail e definição de uma nova senha. A Edge Function `admin-password` valida o token no Auth, verifica `is_super_admin` com esse token e usa a credencial de serviço somente no ambiente do servidor para atualizar o usuário no Auth Admin API. A senha não é retornada nem registrada pelo código. Credenciais de serviço nunca devem ser copiadas para `dist/`. O envio da nova senha ao organizador é responsabilidade do administrador; o site não envia mensagens automaticamente.
