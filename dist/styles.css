@@ -37,3 +37,9 @@
 .card-prize{display:flex;flex-direction:column;align-items:flex-end;gap:3px;text-align:right}
 .card-prize small{font-size:8px;line-height:1.3;color:#648092}
 .card-prize strong{font-size:14px;line-height:1.25;font-weight:700;color:var(--navy)}
+
+/* Uploaded banners have no decorative rings or default artwork. */
+.poster:has(.poster-image){background:#fff;box-shadow:none}
+.poster:has(.poster-image)::before,.poster:has(.poster-image)::after{content:none;display:none;box-shadow:none}
+.poster:has(.poster-image) .poster-mark{display:none}
+.poster-image{background:#fff}
