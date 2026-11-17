@@ -1,0 +1,4 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');
+const b=require('../dist/banner.js');
+test('only supported images up to 5 MB are accepted',()=>{assert.equal(b.validate({type:'image/png',size:1024}), '');assert.equal(b.validate({type:'image/webp',size:5*1024*1024}), '');assert.ok(b.validate({type:'image/svg+xml',size:100}));assert.ok(b.validate({type:'image/jpeg',size:5*1024*1024+1}));assert.ok(b.validate({type:'image/png',size:0}));});
+test('public banner URLs use only constrained storage paths',()=>{assert.equal(b.url(null),'');assert.equal(b.url('https://evil.example/x.png'),'');assert.equal(b.url('../x.png'),'');assert.match(b.url('11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222.webp'),/^https:\/\/zetarilmjhsqxrvnqnxp.supabase.co\/storage\/v1\/object\/public\/tournament-banners\//);});

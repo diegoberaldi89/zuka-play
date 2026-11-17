@@ -35,6 +35,8 @@ const backend = (()=>{
   save:(event,games)=>rest('rpc/save_event','POST',{event,games}),
   async remove(id){const r=await fetch(url+'/rest/v1/tournaments?id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:{apikey:key,Authorization:'Bearer '+await token(),Prefer:'return=representation'}});const data=await r.json();if(!r.ok||!Array.isArray(data)||!data.length)throw new Error('Não foi possível excluir o torneio.');},
   async adminPassword(userId,password){return request('/functions/v1/admin-password','POST',{userId,password},await token());},
+  async uploadBanner(file){const error=ZukaBanner.validate(file);if(error)throw new Error(error);if(!session?.user)throw new Error('Entre para enviar o banner.');const path=session.user.id+'/'+crypto.randomUUID()+'.'+ZukaBanner.types[file.type];const res=await fetch(url+'/storage/v1/object/tournament-banners/'+path,{method:'POST',headers:{apikey:key,Authorization:'Bearer '+await token(),'Content-Type':file.type,'Cache-Control':'3600'},body:file});if(!res.ok)throw new Error('Não foi possível enviar o banner. Tente novamente.');return path;},
+  async deleteBanner(path){if(!ZukaBanner.url(path))return;const r=await fetch(url+'/storage/v1/object/tournament-banners',{method:'DELETE',headers:{apikey:key,Authorization:'Bearer '+await token(),'Content-Type':'application/json'},body:JSON.stringify({prefixes:[path]})});if(!r.ok)throw new Error('Não foi possível remover o arquivo anterior.');},
   syncSession(){try{session=JSON.parse(localStorage.getItem(storageKey));}catch{session=null;}}
  };
 })();

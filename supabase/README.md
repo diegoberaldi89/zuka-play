@@ -64,3 +64,9 @@ O painel administrativo inclui busca por nome/e-mail e definição de uma nova s
 ## Valores e endereço do torneio
 
 A migração `202611160004_tournament_fields.sql` adiciona quatro valores numéricos de inscrição, premiação numérica, rua, bairro, número e CEP. Valores nulos significam não informado e zero representa gratuidade. Campos textuais antigos de endereço e preço permanecem para compatibilidade. A interface mostra os valores com moeda BRL. Um trigger converte nomes de torneios para maiúsculas inclusive em gravações diretas. A função `save_event` continua respeitando proprietário e superadministrador e preserva os novos campos quando um cliente antigo não os envia. Migração aplicada pelo SQL Editor.
+
+## Banner do torneio
+
+A migração `202611160005_banners.sql` foi aplicada via SQL Editor. O bucket público `tournament-banners` aceita JPEG, PNG e WebP até 5 MB. O upload exige autenticação e um caminho com UUID do usuário e UUID do arquivo; o cliente não sobrescreve objetos. O torneio guarda `banner_path`, validado como caminho do bucket. RLS dos eventos continua determinando quem pode vincular/remover um banner. Administradores podem editar todos os eventos.
+
+O formulário permite prévia, troca e remoção ao salvar. O catálogo e os detalhes preservam a proporção integral da arte. Upload que falhar na gravação do torneio tem remoção compensatória; se essa limpeza também falhar, o arquivo pode ficar órfão. Arquivos antigos de banners substituídos/removidos permanecem no bucket, sem vínculo no catálogo; planejar limpeza por referências antes de excluir objetos para não afetar imagens em uso. O bucket destina-se exclusivamente a artes públicas de divulgação.
